@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'traffic'|trans|capitalize }} - {% endblock %}
+
+{% block body %}
+    {% import 'components/traffic-details.html.twig' as details %}
+    {% import 'components/traffic-interfaces.html.twig' as interfaces %}
+    <div data-controller="traffic">
+        <div>
+            <div>
+                <p class="text-lg font-bold">{{ 'traffic.on'|trans|capitalize }} <b class="text-emerald-500">{{ printServer }}</b></p>
+                <div class="mt-4">
+                    <span class="font-semibold">{{ 'traffic.choose.interface'|trans|capitalize }}</span>
+                    {{ interfaces.list(interfaces, mainInterface) }}
+                </div>
+                <div class="mt-4" data-traffic-target="trafficDetails">
+                    {{ details.list(interfaces, mainInterface, null) }}
+                </div>
+                <div class="mt-4">
+                    <p class="font-semibold">{{ 'traffic.choose.frequency'|trans|capitalize }}</p>
+                    <div class="flex flex-col pl-4">
+                        <label class="font-bold text-sm mt-2 cursor-pointer">
+                            <input class="w-4 h-4 mr-2 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2" data-traffic-target="radiosInterface" type="radio" name="frequencies" value="fiveminute">
+                            {{ 'all.five.minutes'|trans|capitalize }}
+                        </label>
+                        <label class="font-bold text-sm mt-2 cursor-pointer">
+                            <input class="w-4 h-4 mr-2 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2" data-traffic-target="radiosInterface" id="first-frequencies-input" type="radio" name="frequencies" value="hour">
+                            {{ 'all.hours'|trans|capitalize }}
+                        </label>
+                        <label class="font-bold text-sm mt-2 cursor-pointer">
+                            <input class="w-4 h-4 mr-2 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2" data-traffic-target="radiosInterface" type="radio" name="frequencies" checked value="day">
+                            {{ 'all.days'|trans|capitalize }}
+                        </label>
+                        <label class="font-bold text-sm mt-2 cursor-pointer">
+                            <input class="w-4 h-4 mr-2 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2" data-traffic-target="radiosInterface" type="radio" name="frequencies" value="month">
+                            {{ 'all.months'|trans|capitalize }}
+                        </label>
+                        <label class="font-bold text-sm mt-2 cursor-pointer">
+                            <input class="w-4 h-4 mr-2 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2" data-traffic-target="radiosInterface" type="radio" name="frequencies" value="year">
+                            {{ 'all.years'|trans|capitalize }}
+                        </label>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button data-traffic-target="trafficRefresh" class="flex justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500" type="button">{{ 'refresh'|trans|capitalize }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-6">
+            <div>
+                <div id="traffic" data-traffic-target="traffic" data-interfaces="{{ interfaces|json_encode() }}" data-main-interface="{{ mainInterface }}" class="border border-gray-600 rounded-xl bg-gradient-to-r from-gray-900/50 to-emerald-800/40 shadow-inner pt-6"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

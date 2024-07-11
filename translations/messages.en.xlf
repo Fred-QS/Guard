@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="cynL4Ju" resname="login.title">
+        <source>login.title</source>
+        <target>sign in to your account</target>
+      </trans-unit>
+      <trans-unit id="_GPP8Zx" resname="login.label.email">
+        <source>login.label.email</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="iFCu3sK" resname="login.label.password">
+        <source>login.label.password</source>
+        <target>password</target>
+      </trans-unit>
+      <trans-unit id="UuKGMj8" resname="login.checkbox.remember_me">
+        <source>login.checkbox.remember_me</source>
+        <target>remember me</target>
+      </trans-unit>
+      <trans-unit id="duwEH8O" resname="login.button.sign_in">
+        <source>login.button.sign_in</source>
+        <target>sign in</target>
+      </trans-unit>
+      <trans-unit id="B0GBe_Y" resname="dashboard">
+        <source>dashboard</source>
+        <target>dashboard</target>
+      </trans-unit>
+      <trans-unit id=".ahlERO" resname="aside.close_side_bar">
+        <source>aside.close_side_bar</source>
+        <target>close side bar</target>
+      </trans-unit>
+      <trans-unit id="afAL6HR" resname="settings">
+        <source>settings</source>
+        <target>settings</target>
+      </trans-unit>
+      <trans-unit id="0pFQJZb" resname="header.open_side_bar">
+        <source>header.open_side_bar</source>
+        <target>open side bar</target>
+      </trans-unit>
+      <trans-unit id="kns36YA" resname="header.search.placeholder">
+        <source>header.search.placeholder</source>
+        <target>search</target>
+      </trans-unit>
+      <trans-unit id="3skVkFK" resname="header.view_notifications">
+        <source>header.view_notifications</source>
+        <target>view notifications</target>
+      </trans-unit>
+      <trans-unit id="DA6.5FB" resname="header.open_user_menu">
+        <source>header.open_user_menu</source>
+        <target>open user menu</target>
+      </trans-unit>
+      <trans-unit id="wNEpYhc" resname="header.your_profile">
+        <source>header.your_profile</source>
+        <target>your profile</target>
+      </trans-unit>
+      <trans-unit id="q5TxDpa" resname="header.sign_out">
+        <source>header.sign_out</source>
+        <target>sign out</target>
+      </trans-unit>
+      <trans-unit id="0LlKtoq" resname="configuration">
+        <source>configuration</source>
+        <target>configuration</target>
+      </trans-unit>
+      <trans-unit id="si0nVgY" resname="server.state">
+        <source>server.state</source>
+        <target>server state</target>
+      </trans-unit>
+      <trans-unit id="1COcWGX" resname="traffic">
+        <source>traffic</source>
+        <target>traffic</target>
+      </trans-unit>
+      <trans-unit id="IrjTDk7" resname="temperature">
+        <source>temperature</source>
+        <target>temperature</target>
+      </trans-unit>
+      <trans-unit id="HOgqESD" resname="notifications">
+        <source>notifications</source>
+        <target>notifications</target>
+      </trans-unit>
+      <trans-unit id="k3qJihk" resname="profile">
+        <source>profile</source>
+        <target>profile</target>
+      </trans-unit>
+      <trans-unit id="PDz2P0y" resname="backups">
+        <source>backups</source>
+        <target>backups</target>
+      </trans-unit>
+      <trans-unit id="eatUibL" resname="supervision">
+        <source>supervision</source>
+        <target>supervision</target>
+      </trans-unit>
+      <trans-unit id="s2osw1m" resname="day.sunday">
+        <source>day.sunday</source>
+        <target>sunday</target>
+      </trans-unit>
+      <trans-unit id="17wtWM." resname="day.monday">
+        <source>day.monday</source>
+        <target>monday</target>
+      </trans-unit>
+      <trans-unit id="ecex25Q" resname="day.tuesday">
+        <source>day.tuesday</source>
+        <target>tuesday</target>
+      </trans-unit>
+      <trans-unit id="HfwK8bR" resname="day.wednesday">
+        <source>day.wednesday</source>
+        <target>wednesday</target>
+      </trans-unit>
+      <trans-unit id="SShoeCb" resname="day.thursday">
+        <source>day.thursday</source>
+        <target>thursday</target>
+      </trans-unit>
+      <trans-unit id="JQ619Wq" resname="day.friday">
+        <source>day.friday</source>
+        <target>friday</target>
+      </trans-unit>
+      <trans-unit id="hVh8Mcm" resname="day.saturday">
+        <source>day.saturday</source>
+        <target>saturday</target>
+      </trans-unit>
+      <trans-unit id="Dz.hD_n" resname="month.january">
+        <source>month.january</source>
+        <target>january</target>
+      </trans-unit>
+      <trans-unit id="i8DJ2Kb" resname="month.february">
+        <source>month.february</source>
+        <target>february</target>
+      </trans-unit>
+      <trans-unit id="UQ09Y2y" resname="month.march">
+        <source>month.march</source>
+        <target>march</target>
+      </trans-unit>
+      <trans-unit id="lcsy8eI" resname="month.april">
+        <source>month.april</source>
+        <target>april</target>
+      </trans-unit>
+      <trans-unit id="T3qMyzX" resname="month.may">
+        <source>month.may</source>
+        <target>may</target>
+      </trans-unit>
+      <trans-unit id="YZ3NAIS" resname="month.june">
+        <source>month.june</source>
+        <target>june</target>
+      </trans-unit>
+      <trans-unit id="dpFHhgK" resname="month.july">
+        <source>month.july</source>
+        <target>july</target>
+      </trans-unit>
+      <trans-unit id="ITql6Cw" resname="month.august">
+        <source>month.august</source>
+        <target>august</target>
+      </trans-unit>
+      <trans-unit id="xheaoJK" resname="month.september">
+        <source>month.september</source>
+        <target>september</target>
+      </trans-unit>
+      <trans-unit id="VaTwJoF" resname="month.october">
+        <source>month.october</source>
+        <target>october</target>
+      </trans-unit>
+      <trans-unit id="skdFheG" resname="month.november">
+        <source>month.november</source>
+        <target>november</target>
+      </trans-unit>
+      <trans-unit id="bZJUAQA" resname="month.december">
+        <source>month.december</source>
+        <target>december</target>
+      </trans-unit>
+      <trans-unit id="AmUulBY" resname="all.five.minutes">
+        <source>all.five.minutes</source>
+        <target>all 5 minutes</target>
+      </trans-unit>
+      <trans-unit id="GtAiCnb" resname="all.hours">
+        <source>all.hours</source>
+        <target>all hours</target>
+      </trans-unit>
+      <trans-unit id="j4VNoXp" resname="all.days">
+        <source>all.days</source>
+        <target>all days</target>
+      </trans-unit>
+      <trans-unit id="QKyUewd" resname="all.months">
+        <source>all.months</source>
+        <target>all months</target>
+      </trans-unit>
+      <trans-unit id="muROTCw" resname="all.years">
+        <source>all.years</source>
+        <target>all years</target>
+      </trans-unit>
+      <trans-unit id="uIcaEac" resname="mandatory.fields">
+        <source>mandatory.fields</source>
+        <target>all required fields must be completed</target>
+      </trans-unit>
+      <trans-unit id="nt0KuKT" resname="xhr.error">
+        <source>xhr.error</source>
+        <target>an xhr error occurred</target>
+      </trans-unit>
+      <trans-unit id="d02if3J" resname="highcharts.description">
+        <source>highcharts.description</source>
+        <target>traffic of incoming and outgoing data on the server.</target>
+      </trans-unit>
+      <trans-unit id="J1IrdNS" resname="highcharts.title">
+        <source>highcharts.title</source>
+        <target>data received (RX) and transmitted (TX)</target>
+      </trans-unit>
+      <trans-unit id="8bDuF.R" resname="highcharts.frequency">
+        <source>highcharts.frequency</source>
+        <target>frequency</target>
+      </trans-unit>
+      <trans-unit id="XTtJSEC" resname="highcharts.xaxis.description">
+        <source>highcharts.xaxis.description</source>
+        <target>values of transfers between</target>
+      </trans-unit>
+      <trans-unit id="MbkjM1p" resname="highcharts.yaxis.title">
+        <source>highcharts.yaxis.title</source>
+        <target>byte volumes transferred</target>
+      </trans-unit>
+      <trans-unit id="A1ngaM_" resname="highcharts.tooltip">
+        <source>highcharts.tooltip</source>
+        <target>transfer of</target>
+      </trans-unit>
+      <trans-unit id="TdSNHcB" resname="highcharts.drives.total">
+        <source>highcharts.drives.total</source>
+        <target>total space</target>
+      </trans-unit>
+      <trans-unit id="6vjp5ds" resname="highcharts.drives.used">
+        <source>highcharts.drives.used</source>
+        <target>space used</target>
+      </trans-unit>
+      <trans-unit id="ONnc11t" resname="highcharts.drives.free">
+        <source>highcharts.drives.free</source>
+        <target>free space</target>
+      </trans-unit>
+      <trans-unit id="VEICcUx" resname="databases">
+        <source>databases</source>
+        <target>all databases</target>
+      </trans-unit>
+      <trans-unit id="HcrpCgY" resname="cron">
+        <source>cron</source>
+        <target>cron tasks</target>
+      </trans-unit>
+      <trans-unit id="55Jzdd4" resname="containers">
+        <source>containers</source>
+        <target>containers</target>
+      </trans-unit>
+      <trans-unit id="446tiav" resname="sites">
+        <source>sites</source>
+        <target>web sites</target>
+      </trans-unit>
+      <trans-unit id="hfEhi.I" resname="temperature.reports">
+        <source>temperature.reports</source>
+        <target>temperature reports</target>
+      </trans-unit>
+      <trans-unit id="4d6A03j" resname="server.folder.tree">
+        <source>server.folder.tree</source>
+        <target>folder tree</target>
+      </trans-unit>
+      <trans-unit id="Y1_d8za" resname="server.disk.space.report">
+        <source>server.disk.space.report</source>
+        <target>disk space report</target>
+      </trans-unit>
+      <trans-unit id="O8gOXW7" resname="config.server">
+        <source>config.server</source>
+        <target>server configuration</target>
+      </trans-unit>
+      <trans-unit id="6Ft81wL" resname="traffic.on">
+        <source>traffic.on</source>
+        <target>traffic on</target>
+      </trans-unit>
+      <trans-unit id="FYGioPD" resname="traffic.choose.interface">
+        <source>traffic.choose.interface</source>
+        <target>choose an interface</target>
+      </trans-unit>
+      <trans-unit id="6In8IDE" resname="traffic.created.at">
+        <source>traffic.created.at</source>
+        <target>created at</target>
+      </trans-unit>
+      <trans-unit id="V1sHNUm" resname="traffic.updated.at">
+        <source>traffic.updated.at</source>
+        <target>updated at</target>
+      </trans-unit>
+      <trans-unit id="LmpfZXc" resname="traffic.total.received">
+        <source>traffic.total.received</source>
+        <target>total received</target>
+      </trans-unit>
+      <trans-unit id="GtGj_0V" resname="traffic.total.transmitted">
+        <source>traffic.total.transmitted</source>
+        <target>total transmitted</target>
+      </trans-unit>
+      <trans-unit id="SryDTZu" resname="traffic.choose.frequency">
+        <source>traffic.choose.frequency</source>
+        <target>choose a frequency</target>
+      </trans-unit>
+      <trans-unit id="ZMCgJVG" resname="refresh">
+        <source>refresh</source>
+        <target>refresh</target>
+      </trans-unit>
+      <trans-unit id="4J1EkUW" resname="filesystem">
+        <source>filesystem</source>
+        <target>filesystem</target>
+      </trans-unit>
+      <trans-unit id="nkQOrlx" resname="size">
+        <source>size</source>
+        <target>size</target>
+      </trans-unit>
+      <trans-unit id="tF4VhwH" resname="used">
+        <source>used</source>
+        <target>used</target>
+      </trans-unit>
+      <trans-unit id="g5pDgK4" resname="available">
+        <source>available</source>
+        <target>available</target>
+      </trans-unit>
+      <trans-unit id="xIp8f02" resname="used.percent">
+        <source>used.percent</source>
+        <target>percentage used</target>
+      </trans-unit>
+      <trans-unit id="Appa_BY" resname="mounted.on">
+        <source>mounted.on</source>
+        <target>mounted on</target>
+      </trans-unit>
+      <trans-unit id="U8ahXiB" resname="server.hardware.error">
+        <source>server.hardware.error</source>
+        <target>a server hardware decoded error occurred.</target>
+      </trans-unit>
+      <trans-unit id="mO7yTwt" resname="config.not.available">
+        <source>config.not.available</source>
+        <target>the server configuration is not available</target>
+      </trans-unit>
+      <trans-unit id="bCzT4O7" resname="highcharts.transfer">
+        <source>highcharts.transfer</source>
+        <target>Transfer of</target>
+      </trans-unit>
+      <trans-unit id="eE71aYI" resname="highcharts.on">
+        <source>highcharts.on</source>
+        <target>on</target>
+      </trans-unit>
+      <trans-unit id="O8cMfIR" resname="highcharts.at">
+        <source>highcharts.at</source>
+        <target>at</target>
+      </trans-unit>
+      <trans-unit id="5mBT1Ls" resname="cron.frequency">
+        <source>cron.frequency</source>
+        <target>frequency</target>
+      </trans-unit>
+      <trans-unit id="V3JCLm5" resname="cron.previousrun">
+        <source>cron.previousrun</source>
+        <target>previous run</target>
+      </trans-unit>
+      <trans-unit id="sbEO8xc" resname="cron.nextrun">
+        <source>cron.nextrun</source>
+        <target>next run</target>
+      </trans-unit>
+      <trans-unit id="nNdAwUs" resname="database.title.database">
+        <source>database.title.database</source>
+        <target>database</target>
+      </trans-unit>
+      <trans-unit id="eenMT5a" resname="database.title.table">
+        <source>database.title.table</source>
+        <target>table</target>
+      </trans-unit>
+      <trans-unit id="56Iiyl6" resname="database.title.total">
+        <source>database.title.total</source>
+        <target>total</target>
+      </trans-unit>
+      <trans-unit id="n.gdadX" resname="database.button.search">
+        <source>database.button.search</source>
+        <target>search</target>
+      </trans-unit>
+      <trans-unit id="1CtPb2c" resname="database.option.elements_per_page">
+        <source>database.option.elements_per_page</source>
+        <target>%nb% elements per page</target>
+      </trans-unit>
+      <trans-unit id="FLBmFUl" resname="database.button.apply">
+        <source>database.button.apply</source>
+        <target>apply</target>
+      </trans-unit>
+      <trans-unit id="93HPtve" resname="database.label.elements_in_page">
+        <source>database.label.elements_in_page</source>
+        <target>%nb% elements_in_page</target>
+      </trans-unit>
+      <trans-unit id="L8qvdLk" resname="database.pagination.on">
+        <source>database.pagination.on</source>
+        <target>on</target>
+      </trans-unit>
+      <trans-unit id="cl0uBSp" resname="cron.title.create">
+        <source>cron.title.create</source>
+        <target>create for</target>
+      </trans-unit>
+      <trans-unit id="I3.m28D" resname="cron.label.expression">
+        <source>cron.label.expression</source>
+        <target>expression</target>
+      </trans-unit>
+      <trans-unit id="dfltqS_" resname="cron.label.args">
+        <source>cron.label.args</source>
+        <target>args</target>
+      </trans-unit>
+      <trans-unit id="G9MYKFq" resname="cron.button.create">
+        <source>cron.button.create</source>
+        <target>create</target>
+      </trans-unit>
+      <trans-unit id="TwbzVnr" resname="cron.title.list">
+        <source>cron.title.list</source>
+        <target>tasks list of</target>
+      </trans-unit>
+      <trans-unit id="_0JdUQT" resname="database.title.dbList">
+        <source>database.title.dbList</source>
+        <target>db list</target>
+      </trans-unit>
+      <trans-unit id="e2f83Jz" resname="database.title.tablesList">
+        <source>database.title.tablesList</source>
+        <target>tables list</target>
+      </trans-unit>
+      <trans-unit id="4fMfz6M" resname="database.table.no-result">
+        <source>database.table.no-result</source>
+        <target>No value in the table</target>
+      </trans-unit>
+      <trans-unit id="wO6DHkz" resname="containers.label.actions">
+        <source>containers.label.actions</source>
+        <target>actions</target>
+      </trans-unit>
+      <trans-unit id="EsjgFNJ" resname="cron.button.test">
+        <source>cron.button.test</source>
+        <target>test the command</target>
+      </trans-unit>
+      <trans-unit id="EhXvw_b" resname="cron.test.good">
+        <source>cron.test.good</source>
+        <target>the command has been executed successfully</target>
+      </trans-unit>
+      <trans-unit id="53_PYjC" resname="cron.test.close">
+        <source>cron.test.close</source>
+        <target>close</target>
+      </trans-unit>
+      <trans-unit id="vS.oxHP" resname="containers.label.actions">
+        <source>containers.label.actions</source>
+        <target>actions</target>
+      </trans-unit>
+      <trans-unit id="vEVuO_y" resname="containers.label.createdat">
+        <source>containers.label.createdat</source>
+        <target>created at</target>
+      </trans-unit>
+      <trans-unit id="bvHD7Dx" resname="containers.label.image">
+        <source>containers.label.image</source>
+        <target>image</target>
+      </trans-unit>
+      <trans-unit id="9oZ3vvO" resname="containers.label.names">
+        <source>containers.label.names</source>
+        <target>names</target>
+      </trans-unit>
+      <trans-unit id="Uy6FDlb" resname="containers.label.networks">
+        <source>containers.label.networks</source>
+        <target>networks</target>
+      </trans-unit>
+      <trans-unit id="BPvYeFr" resname="containers.label.status">
+        <source>containers.label.status</source>
+        <target>status</target>
+      </trans-unit>
+      <trans-unit id="containers.label.command" resname="containers.label.command">
+        <source>containers.label.command</source>
+        <target>command</target>
+      </trans-unit>
+      <trans-unit id="containers.label.id" resname="containers.label.id">
+        <source>containers.label.id</source>
+        <target>id</target>
+      </trans-unit>
+      <trans-unit id="containers.label.labels" resname="containers.label.labels">
+        <source>containers.label.labels</source>
+        <target>labels</target>
+      </trans-unit>
+      <trans-unit id="containers.label.localvolumes" resname="containers.label.localvolumes">
+        <source>containers.label.localvolumes</source>
+        <target>local volumes</target>
+      </trans-unit>
+      <trans-unit id="containers.label.mounts" resname="containers.label.mounts">
+        <source>containers.label.mounts</source>
+        <target>mounts</target>
+      </trans-unit>
+      <trans-unit id="containers.label.ports" resname="containers.label.ports">
+        <source>containers.label.ports</source>
+        <target>ports</target>
+      </trans-unit>
+      <trans-unit id="containers.label.runningfor" resname="containers.label.runningfor">
+        <source>containers.label.runningfor</source>
+        <target>running for</target>
+      </trans-unit>
+      <trans-unit id="containers.label.size" resname="containers.label.size">
+        <source>containers.label.size</source>
+        <target>size</target>
+      </trans-unit>
+      <trans-unit id="containers.label.state" resname="containers.label.state">
+        <source>containers.label.state</source>
+        <target>state</target>
+      </trans-unit>
+      <trans-unit id="containers.tooltip.play" resname="containers.tooltip.play">
+        <source>containers.tooltip.play</source>
+        <target>start container</target>
+      </trans-unit>
+      <trans-unit id="containers.tooltip.stop" resname="containers.tooltip.stop">
+        <source>containers.tooltip.stop</source>
+        <target>stop container</target>
+      </trans-unit>
+      <trans-unit id="containers.tooltip.more" resname="containers.tooltip.more">
+        <source>containers.tooltip.more</source>
+        <target>see more</target>
+      </trans-unit>
+      <trans-unit id="containers.tooltip.copy" resname="containers.tooltip.copy">
+        <source>containers.tooltip.copy</source>
+        <target>copy value</target>
+      </trans-unit>
+      <trans-unit id="containers.button.close" resname="containers.button.close">
+        <source>containers.button.close</source>
+        <target>close</target>
+      </trans-unit>
+      <trans-unit id="containers.state.running" resname="containers.state.running">
+        <source>containers.state.running</source>
+        <target>running</target>
+      </trans-unit>
+      <trans-unit id="containers.state.exited" resname="containers.state.exited">
+        <source>containers.state.exited</source>
+        <target>exited</target>
+      </trans-unit>
+      <trans-unit id="containers.state.created" resname="containers.state.created">
+        <source>containers.state.created</source>
+        <target>created</target>
+      </trans-unit>
+      <trans-unit id="sites.reference.title" resname="sites.reference.title">
+        <source>sites.reference.title</source>
+        <target>reference a</target>
+      </trans-unit>
+      <trans-unit id="sites.website" resname="sites.website">
+        <source>sites.website</source>
+        <target>web site</target>
+      </trans-unit>
+      <trans-unit id="sites.type.other" resname="sites.type.other">
+        <source>sites.type.other</source>
+        <target>other</target>
+      </trans-unit>
+      <trans-unit id="sites.label.name" resname="sites.label.name">
+        <source>sites.label.name</source>
+        <target>name</target>
+      </trans-unit>
+      <trans-unit id="sites.label.path" resname="sites.label.path">
+        <source>sites.label.path</source>
+        <target>path</target>
+      </trans-unit>
+      <trans-unit id="sites.label.endpoint" resname="sites.label.endpoint">
+        <source>sites.label.endpoint</source>
+        <target>endpoint</target>
+      </trans-unit>
+      <trans-unit id="sites.label.type" resname="sites.label.type">
+        <source>sites.label.type</source>
+        <target>type</target>
+      </trans-unit>
+      <trans-unit id="sites.label.db" resname="sites.label.db">
+        <source>sites.label.db</source>
+        <target>database</target>
+      </trans-unit>
+      <trans-unit id="sites.label.customer" resname="sites.label.customer">
+        <source>sites.label.customer</source>
+        <target>customer</target>
+      </trans-unit>
+      <trans-unit id="sites.label.nodb" resname="sites.label.nodb">
+        <source>sites.label.nodb</source>
+        <target>none</target>
+      </trans-unit>
+      <trans-unit id="sites.button.create" resname="sites.button.create">
+        <source>sites.button.create</source>
+        <target>create</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

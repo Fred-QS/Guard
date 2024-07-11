@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'temperature'|trans|capitalize }} - {% endblock %}
+
+{% block body %}
+    <div data-controller="temperature">
+        <div>
+            <p class="mb-4 text-lg font-bold">{{ 'temperature.reports'|trans|capitalize }} <span class="text-emerald-500" data-temperature-target="title"></span></p>
+            <div data-temperature-target="wrapper" class="border border-gray-600 rounded-xl bg-gradient-to-r from-gray-900/50 to-emerald-800/40 shadow-inner p-6 overflow-auto w-max max-w-full hidden">
+                <pre class="w-max"><code data-temperature-target="container" class="language-js w-max text-sm"></code></pre>
+            </div>
+        </div>
+    </div>
+{% endblock %}

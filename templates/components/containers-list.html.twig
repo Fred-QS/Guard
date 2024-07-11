@@ -1,0 +1,259 @@
+{% macro list(data, columns) %}
+    {% set columns = data.columns  %}
+    {% if data is not empty %}
+        <div>
+            {% if data.values is not empty %}
+                <div class="flex justify-between items-center flex-wrap mb-4">
+                    <div class="flex justify-start items-center flex-wrap">
+                        <label class="mt-2 mr-2">
+                            <select data-containers-target="perPage" name="limit_sup" class="block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 cursor-pointer">
+                                <option{% if data.limit is same as (10) %} selected{% endif %} value="10">{{ 'database.option.elements_per_page'|trans({'%nb%': 10}) }}</option>
+                                <option{% if data.limit is same as (25) %} selected{% endif %}  value="25">{{ 'database.option.elements_per_page'|trans({'%nb%': 25}) }}</option>
+                                <option{% if data.limit is same as (50) %} selected{% endif %}  value="50">{{ 'database.option.elements_per_page'|trans({'%nb%': 50}) }}</option>
+                                <option{% if data.limit is same as (100) %} selected{% endif %}  value="100">{{ 'database.option.elements_per_page'|trans({'%nb%': 100}) }}</option>
+                            </select>
+                        </label>
+                        <div class="mt-2 flex justify-start items-center mr-2 block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 px-2">
+                            <label class="flex justify-start items-center cursor-pointer mr-4">
+                                <input data-containers-target="order" type="radio"{% if data.order is same as 'ASC' %} checked{% endif %} value="ASC" name="order_sup" class="w-4 h-4 mr-1 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                                </svg>
+                            </label>
+                            <label class="flex justify-start items-center cursor-pointer">
+                                <input data-containers-target="order" type="radio"{% if data.order is same as 'DESC' %} checked{% endif %} value="DESC" name="order_sup" class="w-4 h-4 mr-1 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
+                                </svg>
+                            </label>
+                        </div>
+                        <label class="mr-2 mt-2">
+                            <select name="order_by_sup" class="block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 cursor-pointer" data-containers-target="like">
+                                {% for column in columns %}
+                                    {% if column in data.display|remove_status %}
+                                        <option{% if column is same as data.orderBy %} selected{% endif %} value="{{ column }}">{{ ('containers.label.' ~ column|lower)|trans|capitalize }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex justify-end items-center flex-wrap">
+                            <span class="text-sm mt-2">{{ 'database.label.elements_in_page'|trans({'%nb%': data.elements}) }}</span>
+                            {% if data.pages > 1 %}
+                                <div class="flex justify-end items-center mt-2 ml-4">
+                                    {% if data.previous is null %}
+                                        <span class="p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span class="ml-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                            </svg>
+                                        </span>
+                                    {% else %}
+                                        <span data-containers-target="paginator" class="cursor-pointer p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span data-containers-target="paginator" class="cursor-pointer ml-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.previous }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                            </svg>
+                                        </span>
+                                    {% endif %}
+                                    <label class="flex justify-center items-center">
+                                        <input data-containers-target="pageInput" value="{{ data.page }}" type="text" spellcheck="false" autocomplete="page" step="1" min="1" max="{{ data.pages }}" class="ml-2 block rounded-md border-0 bg-white/5 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-emerald-500 text-sm leading-4 w-14">
+                                        <p class="mx-2 text-sm text-emerald-500">{{ 'database.pagination.on'|trans }} {{ data.pages }}</p>
+                                    </label>
+                                    {% if data.next is null %}
+                                        <span class="mr-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span class="p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    {% else %}
+                                        <span data-containers-target="paginator" class="cursor-pointer mr-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.next }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span data-containers-target="paginator" class="cursor-pointer p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.pages }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if data.values is not empty %}
+                <div class="flow-root pb-2 px-4 rounded-2xl border border-gray-600">
+                    <div class="overflow-x-auto w-full">
+                        <div class="inline-block min-w-full align-middle">
+                            <table class="min-w-full divide-y divide-gray-700">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-emerald-500 sm:pl-0">{{ 'containers.label.actions'|trans|capitalize }}</th>
+                                    {% for column in data.display|remove_status %}
+                                        {% if loop.index is same as columns|length %}
+                                            <th scope="col" class="pl-3 py-3.5 pr-4 text-left text-sm font-bold text-emerald-500 sm:pr-0">{{ ('containers.label.' ~ column|lower)|trans|capitalize }}</th>
+                                        {% else %}
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-emerald-500">{{ ('containers.label.' ~ column|lower)|trans|capitalize }}</th>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800">
+                                {% for row in data.values|filter_by_display(data.display) %}
+                                    {% set state = data.values[loop.index - 1].State %}
+                                    <tr>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-600 sm:pl-0">
+                                            <div class="flex items-center justify-start">
+                                                <button{% if state is same as 'running' %} disabled{% endif %} type="button" data-containers-target="playAction" class="w-8 h-8 rounded-lg border border-gray-600 flex items-center justify-center text-emerald-500 bg-gray-800 hover:bg-gray-600 duration-200 disabled:opacity-30" data-container-name="{{ data.values[loop.index - 1].Names }}" title="{{ 'containers.tooltip.play'|trans|capitalize }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                                                    </svg>
+                                                </button>
+                                                <button{% if state is not same as 'running' %} disabled{% endif %} type="button" data-containers-target="stopAction" class="w-8 h-8 rounded-lg border border-gray-600 flex items-center justify-center text-emerald-500 bg-gray-800 mx-2 hover:bg-gray-600 duration-200 disabled:opacity-30" data-container-name="{{data.values[loop.index - 1].Names  }}" title="{{ 'containers.tooltip.stop'|trans|capitalize }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z" />
+                                                    </svg>
+                                                </button>
+                                                <button type="button" data-containers-target="moreAction" class="w-8 h-8 rounded-lg border border-gray-600 flex items-center justify-center text-emerald-500 bg-gray-800 hover:bg-gray-600 duration-200 disabled:opacity-30" data-row="{{ data.values[loop.index - 1]|json_encode }}" title="{{ 'containers.tooltip.more'|trans|capitalize }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        {% for value in row|remove_status %}
+                                            {% if loop.index is same as row|length %}
+                                                <td class="whitespace-nowrap py-4 pl-3 pr-4 text-sm text-gray-600 font-semibold sm:pr-0 max-w-[200px] truncate" title="{{ value }}">{{ value }}</td>
+                                            {% else %}
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 font-semibold max-w-[200px] truncate" title="{{ value }}">{{ value }}</td>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="flex justify-between items-center flex-wrap">
+                        <div class="flex justify-start items-center flex-wrap">
+                            <label class="mr-2 mb-2">
+                                <select data-containers-target="perPage" name="limit_sub" class="block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 cursor-pointer">
+                                    <option{% if data.limit is same as (10) %} selected{% endif %} value="10">{{ 'database.option.elements_per_page'|trans({'%nb%': 10}) }}</option>
+                                    <option{% if data.limit is same as (25) %} selected{% endif %}  value="25">{{ 'database.option.elements_per_page'|trans({'%nb%': 25}) }}</option>
+                                    <option{% if data.limit is same as (50) %} selected{% endif %}  value="50">{{ 'database.option.elements_per_page'|trans({'%nb%': 50}) }}</option>
+                                    <option{% if data.limit is same as (100) %} selected{% endif %}  value="100">{{ 'database.option.elements_per_page'|trans({'%nb%': 100}) }}</option>
+                                </select>
+                            </label>
+                            <div class="flex justify-start items-center mr-2 block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 px-2 mb-2">
+                                <label class="flex justify-start items-center cursor-pointer mr-4">
+                                    <input data-containers-target="order" type="radio"{% if data.order is same as 'ASC' %} checked{% endif %} value="ASC" name="order_sub" class="w-4 h-4 mr-1 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                                    </svg>
+                                </label>
+                                <label class="flex justify-start items-center cursor-pointer">
+                                    <input data-containers-target="order" type="radio"{% if data.order is same as 'DESC' %} checked{% endif %} value="DESC" name="order_sub" class="w-4 h-4 mr-1 text-gray-600 bg-gray-700 border-emerald-500 focus:ring-emerald-500 focus:ring-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-emerald-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
+                                    </svg>
+                                </label>
+                            </div>
+                            <label class="mr-2 mb-2">
+                                <select name="order_by_sub" class="block rounded-md border-0 bg-gray-800 py-1.5 text-emerald-500 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6 cursor-pointer" data-containers-target="like">
+                                    {% for column in columns %}
+                                        {% if column in data.display|remove_status %}
+                                            <option{% if column is same as data.orderBy %} selected{% endif %} value="{{ column }}">{{ ('containers.label.' ~ column|lower)|trans|capitalize }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        </div>
+                        <div class="flex justify-end items-center flex-wrap">
+                            <span class="text-sm mb-2">{{ 'database.label.elements_in_page'|trans({'%nb%': data.elements}) }}</span>
+                            {% if data.pages > 1 %}
+                                <div class="flex justify-end items-center ml-4 mb-2">
+                                    {% if data.previous is null %}
+                                        <span class="p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span class="ml-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                            </svg>
+                                        </span>
+                                    {% else %}
+                                        <span data-containers-target="paginator" class="cursor-pointer p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span data-containers-target="paginator" class="cursor-pointer ml-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.previous }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                            </svg>
+                                        </span>
+                                    {% endif %}
+                                    <p class="mx-2 text-sm text-emerald-500">{{ data.page }} {{ 'database.pagination.on'|trans }} {{ data.pages }}</p>
+                                    {% if data.next is null %}
+                                        <span class="mr-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span class="p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500 opacity-30">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    {% else %}
+                                        <span data-containers-target="paginator" class="cursor-pointer mr-1 p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.next }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                        <span data-containers-target="paginator" class="cursor-pointer p-1 rounded-md bg-gray-800 text-emerald-500 text-sm flex justify-center items-center border border-emerald-500" data-page="{{ data.pages }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="flex justify-center items-center">
+                    <i class="p-4 italic text-sm text-center text-emerald-500 w-full font-bold">{{ 'database.table.no-result'|trans }}</i>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="flex justify-center items-center">
+                <i class="p-4 italic text-sm text-center text-emerald-500 w-full font-bold">{{ 'database.table.no-result'|trans }}</i>
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}

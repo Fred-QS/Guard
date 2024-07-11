@@ -1,0 +1,8 @@
+App\Entity\User:
+  user_1:
+    email: fred.geffray@gmail.com
+    roles: ["ROLE_ADMIN"]
+    password: <hashPassword('Lespaul96Orange15Coleen04!')>
+    firstname: Frédéric
+    lastname: Geffray
+    createdAt: <date_create('now')>

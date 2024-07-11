@@ -1,0 +1,236 @@
+{% set routeName = app.request.get('_route') %}
+<!-- Animated sidebar for mobile -->
+<div class="relative z-50 lg:hidden" role="dialog" aria-modal="true" data-controller="aside">
+    <div data-aside-target="mobileBackdrop" class="fixed inset-0 bg-gray-700/90 transition-opacity ease-linear duration-300 opacity-0 hidden"></div>
+    <div data-aside-target="mobileMenu" class="fixed inset-0 flex hidden">
+        <div data-aside-target="mobileSidebar" class="relative mr-16 flex w-full max-w-xs flex-1 transition ease-in-out duration-300 transform -translate-x-full">
+            <div data-aside-target="closeMobileSidebarButton" class="absolute left-full top-0 flex w-16 justify-center pt-5 ease-in-out duration-300 opacity-0">
+                <button type="button" class="-m-2.5 p-2.5">
+                    <span class="sr-only">{{ 'aside.close_side_bar'|trans|capitalize }}</span>
+                    <svg class="h-6 w-6 text-emerald-400 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="4" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-customBlack px-6 pb-4 ring-1 ring-emerald-900">
+                <div class="flex h-16 shrink-0 items-center">
+                    <svg class="h-10 w-auto text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path fill="currentColor" d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z"/>
+                    </svg>
+                    <div class="flex flex-col justify-center items-start mt-2">
+                        <p class="text-emerald-500 font-bold text-2xl ml-4 !leading-4 flex">Guard</p>
+                        <i class="text-gray-500 italic text-xs mt-2 ml-4">Server Guardian</i>
+                    </div>
+                </div>
+                <nav class="flex flex-1 flex-col">
+                    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                        <li>
+                            <ul role="list" class="-mx-2 space-y-1">
+                                <li>
+                                    <a href="{{ path('app_dashboard') }}" class="{% if routeName is same as 'app_dashboard' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                        </svg>
+                                        {{ 'dashboard'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_configuration') }}" class="{% if routeName is same as 'app_configuration' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                        </svg>
+                                        {{ 'configuration'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_server') }}" class="{% if routeName is same as 'app_server' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+                                        </svg>
+                                        {{ 'server.state'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_traffic') }}" class="{% if routeName is same as 'app_traffic' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                        </svg>
+                                        {{ 'traffic'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_temperature') }}" class="{% if routeName is same as 'app_temperature' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                                        </svg>
+                                        {{ 'temperature'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_databases') }}" class="{% if routeName is same as 'app_databases' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                        </svg>
+
+                                        {{ 'databases'|trans|capitalize }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_cron') }}" class="{% if routeName is same as 'app_cron' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                        </svg>
+                                        {{ 'cron'|trans|capitalize }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="text-xs font-semibold leading-6 text-emerald-700">{{ 'supervision'|trans|capitalize }}</div>
+                            <ul role="list" class="-mx-2 mt-2 space-y-1">
+                                <li>
+                                    <a href="{{ path('app_backups') }}" class="{% if routeName is same as 'app_backups' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'backups'|trans|upper|first }}</span>
+                                        <span class="truncate">{{ 'backups'|trans|capitalize }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_containers') }}" class="{% if routeName is same as 'app_containers' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'containers'|trans|upper|first }}</span>
+                                        <span class="truncate">{{ 'containers'|trans|capitalize }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('app_sites') }}" class="{% if routeName is same as 'app_sites' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'sites'|trans|upper|first }}</span>
+                                        <span class="truncate">{{ 'sites'|trans|capitalize }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mt-auto">
+                            <a href="{{ path('app_settings') }}" class="{% if routeName is same as 'app_settings' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                {{ 'settings'|trans|capitalize }}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Static sidebar for desktop -->
+<div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+    <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-customBlack px-6 pb-4">
+        <div class="flex h-16 shrink-0 items-center">
+            <svg class="h-10 w-auto text-emerald-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z"/>
+            </svg>
+            <div class="flex flex-col justify-center items-start mt-2">
+                <p class="text-emerald-500 font-bold text-2xl ml-4 !leading-4 flex">Guard</p>
+                <i class="text-gray-500 italic text-xs mt-2 ml-4">Server Guardian</i>
+            </div>
+        </div>
+        <nav class="flex flex-1 flex-col">
+            <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                <li>
+                    <ul role="list" class="-mx-2 space-y-1">
+                        <li>
+                            <a href="{{ path('app_dashboard') }}" class="{% if routeName is same as 'app_dashboard' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                </svg>
+                                {{ 'dashboard'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_configuration') }}" class="{% if routeName is same as 'app_configuration' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
+                                </svg>
+                                {{ 'configuration'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_server') }}" class="{% if routeName is same as 'app_server' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+                                </svg>
+                                {{ 'server.state'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_traffic') }}" class="{% if routeName is same as 'app_traffic' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                </svg>
+                                {{ 'traffic'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_temperature') }}" class="{% if routeName is same as 'app_temperature' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                                </svg>
+                                {{ 'temperature'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_databases') }}" class="{% if routeName is same as 'app_databases' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                                </svg>
+                                {{ 'databases'|trans|capitalize }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_cron') }}" class="{% if routeName is same as 'app_cron' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                                </svg>
+                                {{ 'cron'|trans|capitalize }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="text-xs font-semibold leading-6 text-emerald-700">{{ 'supervision'|trans|capitalize }}</div>
+                    <ul role="list" class="-mx-2 mt-2 space-y-1">
+                        <li>
+                            <a href="{{ path('app_backups') }}" class="{% if routeName is same as 'app_backups' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'backups'|trans|upper|first }}</span>
+                                <span class="truncate">{{ 'backups'|trans|capitalize }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_containers') }}" class="{% if routeName is same as 'app_containers' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'containers'|trans|upper|first }}</span>
+                                <span class="truncate">{{ 'containers'|trans|capitalize }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_sites') }}" class="{% if routeName is same as 'app_sites' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ 'sites'|trans|upper|first }}</span>
+                                <span class="truncate">{{ 'sites'|trans|capitalize }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mt-auto">
+                    <a href="{{ path('app_settings') }}" class="{% if routeName is same as 'app_settings' %}bg-gray-800 text-emerald-500 {% else %}text-gray-500 hover:bg-gray-800 hover:text-emerald-500 {% endif %}group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6">
+                        <svg class="h-6 w-6 shrink-0 stroke-emerald-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {{ 'settings'|trans|capitalize }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

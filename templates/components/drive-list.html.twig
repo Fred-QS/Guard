@@ -1,0 +1,21 @@
+{% macro list(drives, mainDrive, index) %}
+    {% for drive in drives %}
+        {% if index is null %}
+            {% if drive.filesystem.data is same as mainDrive %}
+                <li><b class="text-gray-600">{{ drive.filesystem.trad }} : </b>{{ drive.filesystem.data }}</li>
+                <li><b class="text-gray-600">{{ drive.size.trad }} : </b>{{ drive.size.data }}</li>
+                <li><b class="text-gray-600">{{ drive.used.trad }} : </b>{{ drive.used.data }} ({{ drive.percent.data }}%)</li>
+                <li><b class="text-gray-600">{{ drive.available.trad }} : </b>{{ drive.available.data }}</li>
+                <li><b class="text-gray-600">{{ drive.mounted.trad }} : </b>{{ drive.mounted.data }}</li>
+            {% endif %}
+        {% else %}
+            {% if drive.filesystem.data is same as mainDrive and loop.index is same as (index) %}
+                <li><b class="text-gray-600">{{ drive.filesystem.trad }} : </b>{{ drive.filesystem.data }}</li>
+                <li><b class="text-gray-600">{{ drive.size.trad }} : </b>{{ drive.size.data }}</li>
+                <li><b class="text-gray-600">{{ drive.used.trad }} : </b>{{ drive.used.data }} ({{ drive.percent.data }}%)</li>
+                <li><b class="text-gray-600">{{ drive.available.trad }} : </b>{{ drive.available.data }}</li>
+                <li><b class="text-gray-600">{{ drive.mounted.trad }} : </b>{{ drive.mounted.data }}</li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

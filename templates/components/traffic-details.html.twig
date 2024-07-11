@@ -1,0 +1,19 @@
+{% macro list(interfaces, mainInterface, index) %}
+    {% for interface in interfaces %}
+        {% if index is null %}
+            {% if interface.name is same as mainInterface %}
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.created.at'|trans|capitalize }} <span class="text-emerald-500" id="traffic-created">{{ carbon_format_date(interface.created.date, app.request.getLocale()) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.updated.at'|trans|capitalize }} <span class="text-emerald-500" id="traffic-modified">{{ carbon_format_date(interface.updated.date, app.request.getLocale()) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.total.received'|trans|capitalize }} <span class="text-emerald-500" id="traffic-received">{{ format_size(interface.traffic.total.rx) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.total.transmitted'|trans|capitalize }} <span class="text-emerald-500" id="traffic-transmitted">{{ format_size(interface.traffic.total.tx) }}</span></p>
+            {% endif %}
+        {% else %}
+            {% if interface.name is same as mainInterface and loop.index is same as (index) %}
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.created.at'|trans|capitalize }} <span class="text-emerald-500" id="traffic-created">{{ carbon_format_date(interface.created.date, app.request.getLocale()) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.updated.at'|trans|capitalize }} <span class="text-emerald-500" id="traffic-modified">{{ carbon_format_date(interface.updated.date, app.request.getLocale()) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.total.received'|trans|capitalize }} <span class="text-emerald-500" id="traffic-received">{{ format_size(interface.traffic.total.rx) }}</span></p>
+                <p class="text-gray-600 font-bold text-sm">{{ 'traffic.total.transmitted'|trans|capitalize }} <span class="text-emerald-500" id="traffic-transmitted">{{ format_size(interface.traffic.total.tx) }}</span></p>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

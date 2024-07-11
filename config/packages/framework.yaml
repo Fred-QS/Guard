@@ -1,0 +1,13 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    session:
+        handler_id: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        cookie_lifetime: 14400
+        cookie_secure: 'auto'
+        cookie_samesite: 'lax'
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

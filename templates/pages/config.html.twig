@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'configuration'|trans|capitalize }} - {% endblock %}
+
+{% macro recursiveTree(config, first) %}
+    {% for key, value in config %}
+        {% if value is iterable %}
+            {% if first is same as (false) %}
+                <div class="server-list-container relative">
+                {% if key == 0 or key matches '/^\\d+$/' %}
+                    <span class="absolute top-0 -left-4 server-children flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-emerald-400 group-hover:text-emerald-500">{{ key + 1 }}</span>
+                {% else %}
+                    <p class="{% if key in ['capabilities', 'children'] %}text-white bg-emerald-500 px-3 py-1.5 cursor-pointer flex justify-between leading-6 rounded-md font-semibold{% else%}text-emerald-500 font-bold{% endif %} text-sm mt-4 w-max"{% if key in ['capabilities', 'children'] %} data-config-target="serverListToggles"{% endif %}>
+                        <span>{{ key|title }} {% if value is iterable and key in ['capabilities', 'children'] %}<span class="text-xs italic opacity-70">({{ value|length }}){% endif %}</span></span>
+                        {% if key in ['capabilities', 'children'] %}
+                            <span class="text-white flex justify-center items-center ml-3">
+                                <svg class="h-4 w-4 rotate-0 duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+                <div class="server-list ml-4 mt-2{% if key in ['capabilities', 'children'] %} hidden{% endif %}">
+            {% else %}
+                <div id="first-server-list-container" class="server-list-container relative mt-2">
+            {% endif %}
+            {{ _self.recursiveTree(value, false) }}
+            </div>
+            </div>
+        {% else %}
+            <p class="text-sm"><b class="text-gray-500">{{ key }}</b>: <span>{% if value is same as (true) %}<b class="text-emerald-700">true</b>{% elseif value is same as (false) %}<b class="text-red-400">false</b>{% else %}{{ value }}{% endif %}</span></p>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% block body %}
+    <div data-controller="config">
+        <div>
+            <p class="text-lg font-bold">{{ 'config.server'|trans|capitalize }} <span class="text-emerald-500">{{ printServer }}</span> :</p>
+            <div>
+                {% if config is null %}
+                    <i class="flex text-emerald-500 mt-4 px-4 text-sm">{{ 'config.not.available'|trans|capitalize }}...</i>
+                {% else %}
+                    {{ _self.recursiveTree(config, true) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

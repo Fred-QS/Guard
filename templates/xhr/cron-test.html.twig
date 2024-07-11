@@ -1,0 +1,16 @@
+<div class="flex flex-col items-center justify-center absolute top-0 left-0 z-50 w-full">
+    <ul class="bg-gray-800 border border-gray-600 shadow-lg p-4 w-full max-w-[400px] rounded-2xl">
+        {% if error is null %}
+            {% for message in data %}
+                <li class="text-emerald-500 text-sm">{{ message }}</li>
+            {% else %}
+                <li class="text-emerald-500 text-sm text-center font-bold">{{ 'cron.test.good'|trans|capitalize }}</li>
+            {% endfor %}
+        {% else %}
+            <li class="text-red-500 font-bold text-sm">{{ data.error }}</li>
+        {% endif %}
+        <li class="flex items-center justify-center w-full mt-2">
+            <button data-cron-target="closeTest" type="button" class="mt-2 cursor-pointer flex justify-center rounded-md bg-emerald-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500">{{ 'cron.test.close'|trans|capitalize }}</button>
+        </li>
+    </ul>
+</div>

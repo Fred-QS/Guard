@@ -1,0 +1,76 @@
+<script type="text/javascript" id="translations-constant">
+    const translations = {
+        days: [
+            '{{ 'day.sunday'|trans|capitalize }}',
+            '{{ 'day.monday'|trans|capitalize }}',
+            '{{ 'day.tuesday'|trans|capitalize }}',
+            '{{ 'day.wednesday'|trans|capitalize }}',
+            '{{ 'day.thursday'|trans|capitalize }}',
+            '{{ 'day.friday'|trans|capitalize }}',
+            '{{ 'day.saturday'|trans|capitalize }}'
+        ],
+        months: [
+            '{{ 'month.january'|trans|capitalize }}',
+            '{{ 'month.february'|trans|capitalize }}',
+            '{{ 'month.march'|trans|capitalize }}',
+            '{{ 'month.april'|trans|capitalize }}',
+            '{{ 'month.may'|trans|capitalize }}',
+            '{{ 'month.june'|trans|capitalize }}',
+            '{{ 'month.july'|trans|capitalize }}',
+            '{{ 'month.august'|trans|capitalize }}',
+            '{{ 'month.september'|trans|capitalize }}',
+            '{{ 'month.october'|trans|capitalize }}',
+            '{{ 'month.november'|trans|capitalize }}',
+            '{{ 'month.december'|trans|capitalize }}'
+        ],
+        messages: {
+            'fiveminute': '{{ 'all.five.minutes'|trans|capitalize }}',
+            'hour': '{{ 'all.hours'|trans|capitalize }}',
+            'day': '{{ 'all.days'|trans|capitalize }}',
+            'month': '{{ 'all.months'|trans|capitalize }}',
+            'year': '{{ 'all.years'|trans|capitalize }}',
+            'mandatory_fields': '{{ 'mandatory.fields'|trans|capitalize }}',
+            'xhr_error': '{{ 'xhr.error'|trans|capitalize }}',
+            'highcharts_description': '{{ 'highcharts.description'|trans|capitalize }}',
+            'highcharts_title': '{{ 'highcharts.title'|trans|capitalize }}',
+            'highcharts_frequency': '{{ 'highcharts.frequency'|trans|capitalize }}',
+            'highcharts_xaxis_description': '{{ 'highcharts.xaxis.description'|trans|capitalize }}',
+            'highcharts_yaxis_title': '{{ 'highcharts.yaxis.title'|trans|capitalize }}',
+            'highcharts_tooltip': '{{ 'highcharts.tooltip'|trans|capitalize }}',
+            'highcharts_transfer': '{{ 'highcharts.transfer'|trans|capitalize }}',
+            'highcharts_on': '{{ 'highcharts.on'|trans }}',
+            'highcharts_at': '{{ 'highcharts.at'|trans }}',
+            'highcharts_drives_total': '{{ 'highcharts.drives.total'|trans|capitalize }}',
+            'highcharts_drives_used': '{{ 'highcharts.drives.used'|trans|capitalize }}',
+            'highcharts_drives_free': '{{ 'highcharts.drives.free'|trans|capitalize }}',
+        }
+    }
+    const mainInterface = 'enp5s0';
+    const mainDrive = '/dev/mapper/md0vg-varlv';
+
+    function formatSize(size, full = false) {
+
+        let fullSize = size + ' io',
+            unit = 'io',
+            format = size;
+
+        if (size >= 1024 && size < 1024*1024) {
+            unit = 'Kio';
+            format = (size/1024).toFixed(2);
+        } else if (size >= (1024*1024) && size < (1024*1024*1024)) {
+            unit = 'Mio';
+            format = (size/(1024*1024)).toFixed(2);
+        } else if (size >= (1024*1024*1024) && size < (1024*1024*1024*1024)) {
+            unit = 'Gio';
+            format = (size/(1024*1024*1024)).toFixed(2);
+        }
+
+        fullSize = format + ' ' + unit;
+
+        if (full === false) {
+            return fullSize;
+        } else if (full === true) {
+            return {'size': format, 'unit': unit};
+        }
+    }
+</script>
